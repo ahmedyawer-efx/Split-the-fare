@@ -1,0 +1,136 @@
+<html>
+<head>
+	<title>Split the fare</title>
+	<meta name="viewport" content="width=device-width">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="stylesheet" type="text/css" href="form.css">
+	<link rel="shortcut icon" type="image/x-icon" href="img/sp.ico">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">// <![CDATA[
+	var $ = jQuery.noConflict(); $(document).ready(function()  { $('#myCarousel').carousel({ interval: 3000, cycle: true }); });
+	// ]]></script>
+</head>
+<body>
+	<div class="divBody">
+	<header id="head">
+		<div id="headtext">
+			<a href="https://plus.google.com/107417022204004792149/posts?hl=en"><img class="fb" src="img/fb3.png"></a>
+           	<a href="https://twitter.com/SplitTheFare"><img class="fb" src="img/fb2.png"></a>
+           	<a href="http://www.facebook.com/profile.php?id=100004150307721"><img class="fb" src="img/fb1.ico"></a>
+           	<a href="#"><img class="logo" src="img/logo3.png"></a>
+           	<h3 class="h3home"><em>"most effective transport system"</em> </h3>
+		</div>
+	</header>
+
+	<!-- Nav bar start -->
+ 	<nav class="navbar navbar-inverse" role="navigation">
+	   <div class="navbar-header">
+	   </div>
+	   <div>
+	      <ul class="nav navbar-nav">
+	         <li><a href="final1.html" class="nav2link" style="color:white;">Home</a></li>
+	         <li><a href="how.html" class="nav2link" style="color:white;">How it works</a></li>
+	         <li><a href="booking.html" class="nav2link" style="color:white;">New Booking</a></li>
+	         <li><a href="#" class="nav2link" style="color:white;">Booking History</a></li>
+	         <li><a href="contact.html" class="nav2link" style="color:white;">Contact</a></li>
+	      </ul>
+	   </div>
+	</nav>
+	<!-- Nav bar End -->
+
+	<section class="sec" style="min-height:380px;">
+		<form action="matches.html" method="get" id="formone">
+					<fieldset>
+						<legend><h2>Book A Trip</h2></legend>
+						<p>
+						<label for="name">From</label>
+						<select name="pickup" class="sele" required>
+							<option></option>
+							<option>Adamstown</option>
+							<option>Artane</option>
+							<option>Ashtown</option>
+							<option>Balbriggan</option>
+							<option>Baldoyle</option>
+							<option>Balgriffin</option>
+							<option>Ballinteer</option>
+							<option>Ballsbridge</option>
+							<option>Ballyboden</option>
+							<option>Ballybough</option>
+							<option>Ballyboughal</option>
+							<option>Ballybrack</option>
+							<option>Ballyfermot</option>
+							<option>Ballygall</option>
+							<option>Ballymount</option>
+							<option>Ballyroan</option>
+							<option>Bayside</option>
+							<option>Beaumont</option>
+							<option>Belfield</option>
+							<option>Leopardstown</option>
+							<option>Liberties</option>
+							<option>Liffey Valley</option>
+							<option>Stillorgan</option>
+							<option>Stoneybatter</option>
+							<option>Walkinstown</option>
+						</select>
+						</p>
+						<p>
+						<label for="email">To</label>
+						<select name="pickup" class="sele" required>
+							<option></option>
+							<option>Adamstown</option>
+							<option>Artane</option>
+							<option>Ashtown</option>
+							<option>Balbriggan</option>
+							<option>Baldoyle</option>
+							<option>Balgriffin</option>
+							<option>Ballinteer</option>
+							<option>Ballsbridge</option>
+							<option>Ballyboden</option>
+							<option>Ballybough</option>
+							<option>Ballyboughal</option>
+							<option>Ballybrack</option>
+							<option>Ballyfermot</option>
+							<option>Ballygall</option>
+							<option>Ballymount</option>
+							<option>Ballyroan</option>
+							<option>Bayside</option>
+							<option>Beaumont</option>
+							<option>Belfield</option>
+							<option>Leopardstown</option>
+							<option>Liberties</option>
+							<option>Liffey Valley</option>
+							<option>Stillorgan</option>
+							<option>Stoneybatter</option>
+							<option>Walkinstown</option>
+						</select>
+						</p>
+						<p>
+						<label for="phone">Date</label>
+						<input type="date" name="phone" pattern="[0-9]{10}" required class="sele">
+						</p>
+						<p>
+						<label for="info">time</label>
+						<input type="time" name="info" required style="line-height:10px;" class="sele">
+						</p>
+						<p style="margin-left:120px; width:100px;dispaly:block;">
+							<button type="submit" name="send" value="Submit" class="bookingSub">Book now</button>
+						</p>
+					</fieldset>
+				</form>
+				<a href="bookingmap.html"><div class="add" id="divtwo" style="margin-left:150px; height:150px width:150px;">
+					<p >
+						Or set locations by Map
+					</p>
+					<img src="img/mapico.png" height="150px">	
+				</div></a>	
+	</section>
+
+	<footer class="footer">
+		<p style="text-align:center;">All rights stricly reserved &copy 2014</p> 
+	</footer>	
+</div>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<html>
+<head>
+	<title>Split the fare</title>
+	<meta name="viewport" content="width=device-width">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="shortcut icon" type="image/x-icon" href="img/sp.ico">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script
+	  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+    </script>
+
+    <script type="text/javascript">
+		var po=null;
+		var s,t;
+		var myCenter=new google.maps.LatLng(53.352793, -6.258519);
+		var map;
+		var previousmark = new google.maps.Marker({
+		    position: myCenter,
+		    map: map
+		  });
+		var directionsDisplay;
+		var directionsService = new google.maps.DirectionsService();
+		var remo;
+		function initialize()
+		{
+		  	document.getElementById("6").style.visibility="hidden"; 
+		  	directionsDisplay = new google.maps.DirectionsRenderer();
+		  	var mapProp = {
+		      center:myCenter,
+		      zoom:11,
+		  	  mapTypeId:google.maps.MapTypeId.ROADMAP
+		    };
+		  	map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		  	directionsDisplay.setMap(map);
+		  	if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(showPosition,showError);
+		    }
+		    else {
+        		alert("Geolocation is not supported by this browser.");
+    		}
+		  	remo= google.maps.event.addListener(map, 'click', function(e) {
+		    	placeMarker1(e.latLng);
+		    }); 
+		}
+		function showError(error) {
+		    switch(error.code) {
+		        case error.PERMISSION_DENIED:
+		            alert("User denied the request for Geolocation.");
+		            break;
+		        case error.POSITION_UNAVAILABLE:
+		            alert("Location information is unavailable.");
+		            break;
+		        case error.TIMEOUT:
+		            alert("The request to get user location timed out.");
+		            break;
+		        case error.UNKNOWN_ERROR:
+		            alert("An unknown error occurred.");
+		            break;
+		    }
+		}
+		function pickcurrent(){  
+			if (navigator.geolocation) {
+		    	    navigator.geolocation.getCurrentPosition(showPosition);
+		    	}
+		}
+		function showPosition(position) { 
+		  	po=null;
+		  	previousmark.setMap(null); 
+		  	s=position.coords.latitude; //save the coords in Global variable to use it 
+		  	t=position.coords.longitude; // in the direction deisplay function.
+	    	marker=new google.maps.Marker({
+		    position:new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+		      });
+		    marker.setMap(map);
+		    previousmark= marker; //save the marker in Globlae variable to be able to delete it when
+		    					  // aonther marked has pointed in another function.
+		}
+		function placeMarker1(position){
+		  	po=position;
+		  	previousmark.setMap(null);
+		  	var marker=new google.maps.Marker({
+		    	position:position,
+		    	});
+		  	marker.setMap(map);
+		  	previousmark= marker;
+		}
+		function dest(){
+		  	document.getElementById("2").style.display="none";
+		  	document.getElementById("3").style.display="none";
+		  	document.getElementById("4").style.display="none";
+		  	document.getElementById("6").style.visibility="visible"; 
+			$("#1").html("Drop pin to set a drop off location. Then to submit trip details press");
+		 	google.maps.event.removeListener(remo);
+		  	remo2=google.maps.event.addListener(map, 'click', function(e) {
+		    	placeMarker(e.latLng);
+		    }); 
+		}
+		function placeMarker(desti) {
+		  	if(po==null){
+		    	var y=new google.maps.LatLng(s, t);
+		  	}
+		  	else{
+		    	var y=po;
+		  	}
+		    var request = {
+		        origin:y,
+		        destination:desti,
+		        travelMode: google.maps.TravelMode.DRIVING
+		    };
+		    directionsService.route(request, function(result, status) {
+		    if (status == google.maps.DirectionsStatus.OK) {
+		        directionsDisplay.setDirections(result);
+		       }
+		    });
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+  	</script>
+</head>
+<body>
+	<div class="divBody">
+	<header id="head">
+		<div id="headtext">
+			<a href="https://plus.google.com/107417022204004792149/posts?hl=en"><img class="fb" src="img/fb3.png"></a>
+           	<a href="https://twitter.com/SplitTheFare"><img class="fb" src="img/fb2.png"></a>
+           	<a href="http://www.facebook.com/profile.php?id=100004150307721"><img class="fb" src="img/fb1.ico"></a>
+           	<a href="#"><img class="logo" src="img/logo3.png"></a>
+           	<h3 class="h3home"><em>"most effective transport system"</em> </h3>
+		</div>
+	</header>
+
+	<!-- Nav bar start -->
+ 	<nav class="navbar navbar-inverse" role="navigation">
+	   <div class="navbar-header">
+	   </div>
+	   <div>
+	      <ul class="nav navbar-nav">
+	         <li><a href="final1.html" class="nav2link" style="color:white;">Home</a></li>
+	         <li><a href="how.html" class="nav2link" style="color:white;">How it works</a></li>
+	         <li><a href="booking.html" class="nav2link" style="color:white;">New Booking</a></li>
+	         <li><a href="#" class="nav2link" style="color:white;">Booking History</a></li>
+	         <li><a href="contact.html" class="nav2link" style="color:white;">Contact</a></li>
+	      </ul>
+	   </div>
+	</nav>
+	<section class="sec" style="max-width: 700px; margin:auto; display:block;">
+		
+			<div id="googleMap" ></div>
+			<h4 id="1"style="display:inline;">Choose</h4>
+			<button id="2" onclick="pickcurrent()" class="bookingsub">current location</button>
+			<h4 id="3" style="display:inline;">or drop pin to set a pick up location, then press</h4>
+			<button id="4" onclick="dest()" class="bookingsub">OK</button>
+			<h4 id="5" style="display:inline;"></h4>
+			<button id="6" onclick="" class="bookingsub"><a href="matches.html">OK</a></button>
+			</br>	
+	</section>
+	
+	<footer class="footer">
+		<p style="text-align:center;">All rights stricly reserved &copy 2014</p> 
+	</footer>
+	
+</div>
+	
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+       form{
+		   	float: left;
+		   	max-width: 500px;
+	   }
+	   	fieldset{
+	      clear: both;
+	      padding: 5px;
+	   }
+	   legend{
+	      font-size: 30px;
+	   }
+	   label{
+	      text-align: right;
+	      width: 100px;
+	      float: left;
+	      padding-right: 2px;
+	   }
+	   input{
+	      min-width: 100px; 
+	   }
+	   .add{
+	   		float: left;
+			padding: 20px;	
+			margin-left: 60px;
+			margin-top: 75px;
+			background-color: #141414;
+			border-radius: 10px;
+			color:#ffffff;
+			font-weight: bold;
+	   }
+	   .sele{
+	   	width: 162px;
+	   }
+	   @media (max-width: 797px){
+	   		form{
+	   			float: none;
+	   		}
+	   		fieldset{
+	   			display: block;
+	   		}
+	   		.add{
+	   			float: none;
+	   			clear: both;
+	   			display: block;
+	   			margin:15px;
+	   		}
+	   		input{
+	   			max-width: 270px;
+	   		}
+	   	}
